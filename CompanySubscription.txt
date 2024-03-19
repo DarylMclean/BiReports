@@ -1,0 +1,1336 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.19.1.final using JasperReports Library version 6.13.0  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="CompanyCompliance" language="groovy" pageWidth="1400" pageHeight="1400" orientation="Landscape" columnWidth="1360" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="ae5f1ab7-da55-4199-a56b-08c10f568312">
+	<property name="ireport.zoom" value="1.2396694214876032"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<property name="ireport.jasperserver.reportUnit" value="/Shared_Reports/Onsite_Reports/Company_Compliance/CompanyComplianceSubscriptionSummary"/>
+	<property name="ireport.jasperserver.url" value="http://js1.prod.az.onsite.local:8080/jasperserver/"/>
+	<property name="ireport.jasperserver.user" value="jasperadmin"/>
+	<property name="ireport.jasperserver.report.resource" value="/Shared_Reports/Onsite_Reports/Company_Compliance/CompanyComplianceSubscriptionSummary_files/CompanyComplianceSubscriptionSummary_"/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="net.sf.jasperreports.export.csv.exclude.origin.band.title" value="title"/>
+	<property name="net.sf.jasperreports.export.xls.exclude.origin.band.title" value="title"/>
+	<property name="net.sf.jasperreports.export.xlsx.exclude.origin.band.title" value="title"/>
+	<property name="net.sf.jasperreports.export.csv.exclude.origin.keep.first.band.1" value="columnHeader"/>
+	<property name="net.sf.jasperreports.export.xls.exclude.origin.band.1" value="pageHeader"/>
+	<property name="net.sf.jasperreports.export.xlsx.exclude.origin.band.1" value="pageHeader"/>
+	<property name="net.sf.jasperreports.export.csv.exclude.origin.band.1" value="pageHeader"/>
+	<property name="net.sf.jasperreports.export.csv.exclude.origin.band.2" value="pageFooter"/>
+	<property name="net.sf.jasperreports.export.xls.exclude.origin.band.2" value="pageFooter"/>
+	<property name="net.sf.jasperreports.export.xls.remove.empty.space.between.columns" value="true"/>
+	<property name="net.sf.jasperreports.export.csv.remove.empty.space.between.columns" value="true"/>
+	<property name="net.sf.jasperreports.export.xlsx.remove.empty.space.between.columns" value="true"/>
+	<property name="net.sf.jasperreports.export.xls.show.gridlines" value="true"/>
+	<property name="net.sf.jasperreports.export.xlsx.show.gridlines" value="true"/>
+	<property name="com.jaspersoft.studio.report.unit.description" value="Company Report - High level summary of contracting company subscriptions (s)"/>
+	<property name="com.jaspersoft.studio.report.description" value="(s)"/>
+	<property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w1" value="0"/>
+	<property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w2" value="1000"/>
+	<property name="com.jaspersoft.studio.unit." value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageHeight" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.topMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.bottomMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.leftMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.rightMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnSpacing" value="pixel"/>
+	<style name="CellStyle">
+		<pen lineWidth="0.5" lineColor="#000000"/>
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<leftPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+			<rightPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="ComplianceStyle" mode="Transparent" forecolor="#FFFFFF" backcolor="#FFFFFF">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[new Boolean($F{OverallCompliance}.equals("C"))]]></conditionExpression>
+			<style mode="Opaque" forecolor="#FFFFFF" backcolor="#509C00"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[new Boolean($F{OverallCompliance}.equals("NC"))]]></conditionExpression>
+			<style mode="Opaque" forecolor="#FFFFFF" backcolor="#FF0000">
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5" lineColor="#000000"/>
+					<leftPen lineWidth="0.5" lineColor="#000000"/>
+					<bottomPen lineWidth="0.5" lineColor="#000000"/>
+					<rightPen lineWidth="0.5" lineColor="#000000"/>
+				</box>
+			</style>
+		</conditionalStyle>
+	</style>
+	<style name="inProgressStyle" mode="Transparent" fontSize="11">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[new Boolean($F{profileStatus}.equals("C"))]]></conditionExpression>
+			<style mode="Opaque" forecolor="#FFFFFF" backcolor="#509C00"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[new Boolean($F{profileStatus}.equals("S") || $F{profileStatus}.equals("SU"))]]></conditionExpression>
+			<style mode="Opaque" forecolor="#FFFFFF" backcolor="#FF9900"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[new Boolean($F{profileStatus}.equals("R"))]]></conditionExpression>
+			<style mode="Opaque" forecolor="#FFFFFF" backcolor="#DD550C"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[new Boolean($F{profileStatus}.equals("X"))]]></conditionExpression>
+			<style forecolor="#FFFFFF" backcolor="#FF0000"/>
+		</conditionalStyle>
+	</style>
+	<style name="licenceStyle">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[new Boolean($F{licenceCompliant}.equals("C") || $F{licenceCompliant}.equals("1") || $F{licenceCompliant}.equals("2") || $F{licenceCompliant}.equals("3"))]]></conditionExpression>
+			<style mode="Opaque" forecolor="#FFFFFF" backcolor="#509C00"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[new Boolean($F{licenceCompliant}.equals("S") || $F{licenceCompliant}.equals("SU"))]]></conditionExpression>
+			<style mode="Opaque" forecolor="#FFFFFF" backcolor="#FF9900"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[new Boolean($F{licenceCompliant}.equals("R"))]]></conditionExpression>
+			<style mode="Opaque" forecolor="#FFFFFF" backcolor="#DD550C"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[new Boolean($F{licenceCompliant}.equals("X"))]]></conditionExpression>
+			<style mode="Opaque" forecolor="#FFFFFF" backcolor="#FF0000">
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5" lineColor="#000000"/>
+					<leftPen lineWidth="0.5" lineColor="#000000"/>
+					<bottomPen lineWidth="0.5" lineColor="#000000"/>
+					<rightPen lineWidth="0.5" lineColor="#000000"/>
+				</box>
+			</style>
+		</conditionalStyle>
+	</style>
+	<style name="insuranceStyle">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[new Boolean($F{insuranceCompliant}.equals("C") || $F{insuranceCompliant}.equals("1") || $F{insuranceCompliant}.equals("2") || $F{insuranceCompliant}.equals("3"))]]></conditionExpression>
+			<style mode="Opaque" forecolor="#FFFFFF" backcolor="#509C00"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[new Boolean($F{insuranceCompliant}.equals("S") || $F{insuranceCompliant}.equals("SU"))]]></conditionExpression>
+			<style mode="Opaque" forecolor="#FFFFFF" backcolor="#FF9900"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[new Boolean($F{insuranceCompliant}.equals("R"))]]></conditionExpression>
+			<style mode="Opaque" forecolor="#FFFFFF" backcolor="#DD550C"/>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[new Boolean($F{insuranceCompliant}.equals("X"))]]></conditionExpression>
+			<style mode="Opaque" forecolor="#FFFFFF" backcolor="#FF0000">
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5" lineColor="#000000"/>
+					<leftPen lineWidth="0.5" lineColor="#000000"/>
+					<bottomPen lineWidth="0.5" lineColor="#000000"/>
+					<rightPen lineWidth="0.5" lineColor="#000000"/>
+				</box>
+			</style>
+		</conditionalStyle>
+	</style>
+	<style name="SMSStyle">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[new Boolean($F{SmsCompliant}.equals("C") || $F{SmsCompliant}.equals("1") || $F{SmsCompliant}.equals("2") || $F{SmsCompliant}.equals("3"))]]></conditionExpression>
+			<style mode="Opaque" forecolor="#FFFFFF" backcolor="#509C00">
+				<box>
+					<pen lineWidth="0.5" lineColor="#000000"/>
+					<topPen lineWidth="0.5" lineColor="#000000"/>
+					<leftPen lineWidth="0.5" lineColor="#000000"/>
+					<bottomPen lineWidth="0.5" lineColor="#000000"/>
+					<rightPen lineWidth="0.5" lineColor="#000000"/>
+				</box>
+			</style>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[new Boolean($F{SmsCompliant}.equals("S") || $F{SmsCompliant}.equals("SU"))]]></conditionExpression>
+			<style mode="Opaque" forecolor="#FFFFFF" backcolor="#FF9900">
+				<box>
+					<pen lineWidth="0.5" lineColor="#000000"/>
+					<topPen lineWidth="0.5" lineColor="#000000"/>
+					<leftPen lineWidth="0.5" lineColor="#000000"/>
+					<bottomPen lineWidth="0.5" lineColor="#000000"/>
+					<rightPen lineWidth="0.5" lineColor="#000000"/>
+				</box>
+			</style>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[new Boolean($F{SmsCompliant}.equals("R"))]]></conditionExpression>
+			<style mode="Opaque" forecolor="#FFFFFF" backcolor="#DD550C">
+				<box>
+					<pen lineWidth="0.5" lineColor="#000000"/>
+					<topPen lineWidth="0.5" lineColor="#000000"/>
+					<leftPen lineWidth="0.5" lineColor="#000000"/>
+					<bottomPen lineWidth="0.5" lineColor="#000000"/>
+					<rightPen lineWidth="0.5" lineColor="#000000"/>
+				</box>
+			</style>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[new Boolean($F{SmsCompliant}.equals("X"))]]></conditionExpression>
+			<style mode="Opaque" forecolor="#FFFFFF" backcolor="#FF0000">
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5" lineColor="#000000"/>
+					<leftPen lineWidth="0.5" lineColor="#000000"/>
+					<bottomPen lineWidth="0.5" lineColor="#000000"/>
+					<rightPen lineWidth="0.5" lineColor="#000000"/>
+				</box>
+			</style>
+		</conditionalStyle>
+	</style>
+	<style name="4801Style">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[new Boolean($F{SMS4801}.equals("C") || $F{SMS4801}.equals("1") || $F{SMS4801}.equals("2") || $F{SMS4801}.equals("3"))]]></conditionExpression>
+			<style mode="Opaque" forecolor="#FFFFFF" backcolor="#509C00">
+				<box>
+					<pen lineWidth="0.5" lineColor="#000000"/>
+					<topPen lineWidth="0.5" lineColor="#000000"/>
+					<leftPen lineWidth="0.5" lineColor="#000000"/>
+					<bottomPen lineWidth="0.5" lineColor="#000000"/>
+					<rightPen lineWidth="0.5" lineColor="#000000"/>
+				</box>
+			</style>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[new Boolean($F{SMS4801}.equals("S") || $F{SMS4801}.equals("SU"))]]></conditionExpression>
+			<style mode="Opaque" forecolor="#FFFFFF" backcolor="#FF9900">
+				<box>
+					<pen lineWidth="0.5" lineColor="#000000"/>
+					<topPen lineWidth="0.5" lineColor="#000000"/>
+					<leftPen lineWidth="0.5" lineColor="#000000"/>
+					<bottomPen lineWidth="0.5" lineColor="#000000"/>
+					<rightPen lineWidth="0.5" lineColor="#000000"/>
+				</box>
+			</style>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[new Boolean($F{SMS4801}.equals("R"))]]></conditionExpression>
+			<style mode="Opaque" forecolor="#FFFFFF" backcolor="#DD550C">
+				<box>
+					<pen lineWidth="0.5" lineColor="#000000"/>
+					<topPen lineWidth="0.5" lineColor="#000000"/>
+					<leftPen lineWidth="0.5" lineColor="#000000"/>
+					<bottomPen lineWidth="0.5" lineColor="#000000"/>
+					<rightPen lineWidth="0.5" lineColor="#000000"/>
+				</box>
+			</style>
+		</conditionalStyle>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[new Boolean($F{SMS4801}.equals("X"))]]></conditionExpression>
+			<style mode="Opaque" forecolor="#FFFFFF" backcolor="#FF0000">
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5" lineColor="#000000"/>
+					<leftPen lineWidth="0.5" lineColor="#000000"/>
+					<bottomPen lineWidth="0.5" lineColor="#000000"/>
+					<rightPen lineWidth="0.5" lineColor="#000000"/>
+				</box>
+			</style>
+		</conditionalStyle>
+	</style>
+	<style name="SMSReviewIPStyle">
+		<box>
+			<pen lineWidth="0.5"/>
+			<topPen lineWidth="0.5"/>
+			<leftPen lineWidth="0.5"/>
+			<bottomPen lineWidth="0.5"/>
+			<rightPen lineWidth="0.5"/>
+		</box>
+		<conditionalStyle>
+			<conditionExpression><![CDATA[new Boolean($F{smsReviewInProgress}=='P')]]></conditionExpression>
+			<style forecolor="#FFFFFF" backcolor="#3A3AC0">
+				<box>
+					<pen lineColor="#000000"/>
+					<topPen lineColor="#000000"/>
+					<leftPen lineColor="#000000"/>
+					<bottomPen lineColor="#000000"/>
+					<rightPen lineColor="#000000"/>
+				</box>
+			</style>
+		</conditionalStyle>
+	</style>
+	<style name="SmsExpiredStyle">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[new Boolean($F{SmsExpired}=="X" )]]></conditionExpression>
+			<style mode="Opaque" forecolor="#FFFFFF" backcolor="#FF0000">
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5" lineColor="#000000"/>
+					<leftPen lineWidth="0.5" lineColor="#000000"/>
+					<bottomPen lineWidth="0.5" lineColor="#000000"/>
+					<rightPen lineWidth="0.5" lineColor="#000000"/>
+				</box>
+			</style>
+		</conditionalStyle>
+	</style>
+	<style name="SMSFailedStyle">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[new Boolean($F{smsFailed}=="X" )]]></conditionExpression>
+			<style mode="Opaque" forecolor="#FFFFFF" backcolor="#FF0000">
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5" lineColor="#000000"/>
+					<leftPen lineWidth="0.5" lineColor="#000000"/>
+					<bottomPen lineWidth="0.5" lineColor="#000000"/>
+					<rightPen lineWidth="0.5" lineColor="#000000"/>
+				</box>
+			</style>
+		</conditionalStyle>
+	</style>
+	<parameter name="LoggedInUsername" class="java.lang.String" isForPrompting="false"/>
+	<queryString>
+		<![CDATA[select
+    d.subNo, d.current, d.expired, d.future, d.OverallCompliance, d.*
+from
+(
+	select
+	    *,
+	    @subNo := IF(@lastCompanyId = d.companyId, @subNo + 1, 1) As subNo,
+	    @lastCompanyId := d.companyId
+	from
+	(
+		select 
+            case
+                when d.current = true and d.OverallCompliance = 'C' then 1
+                when d.future = true and d.OverallCompliance = 'C' then 2
+                when d.current = true and d.OverallCompliance != 'C' then 3
+                when d.future = true and d.OverallCompliance != 'C' then 4
+                else 99
+            end as score,
+		    d.*
+		from
+		(
+			select distinct
+			    d.*,
+
+                case
+                    when now() > d.toDate then 'NC'
+                    when pendingCompanyComplianceCertsId = 0 and profileStatus = 'C' then 'C'
+                    when   (insuranceCompliant = 'N/A' or insuranceCompliant = 'C' or insuranceCompliant = '1' or insuranceCompliant = '2' or insuranceCompliant = '3')
+                        and (licenceCompliant = 'N/A' or licenceCompliant = 'C' or licenceCompliant = '1' or licenceCompliant = '2' or licenceCompliant = '3')
+                        and (SmsCompliant = 'N/A' or SmsCompliant = 'C' or SmsCompliant = '1' or SmsCompliant = '2' or SmsCompliant = '3')
+                        and profileStatus = 'C' then 'C'
+                    else 'NC'
+                end OverallCompliance,
+                if(now() between d.fromDate and d.toDate, 1, 0) as current,
+                if(now() > d.toDate, 1, 0) as expired,
+                if(now() < d.fromDate, 1, 0) as future
+			from
+			(
+				select
+				    ComplianceData.*,
+                    case
+                        when pendingCompanyComplianceCertsId is null and smsReviewInProgress IN ('S','SU','R') then smsReviewInProgress
+
+                        when (certCompliant='1' or SmsReviewCompliant = '1') and (certCompliant<>'X' or SmsReviewCompliant<>'X') then '1'
+                        when (certCompliant='2' or SmsReviewCompliant = '2') and (certCompliant<>'X' or SmsReviewCompliant<>'X') then '2'
+                        when (certCompliant='3' or SmsReviewCompliant = '3') and (certCompliant<>'X' or SmsReviewCompliant<>'X') then '3'
+                        when certCompliant='' and SmsReviewCompliant ='' then ''
+                        when certCompliant='' and SmsReviewCompliant ='X' then 'X'
+                        when certCompliant='X' and SmsReviewCompliant ='' then 'X'
+                        when certCompliant='C' and SmsReviewCompliant ='X' then 'X'
+                        when certCompliant='X' and SmsReviewCompliant ='C' then 'X'
+                        when certCompliant='C' and SmsReviewCompliant ='C' then 'C'
+                        when certCompliant='' and SmsReviewCompliant ='C' then 'C'
+                        when certCompliant='C' and SmsReviewCompliant ='' then 'C'
+                        else 'X'
+                    end registeredCompliant,
+                    case
+                        when requiresSmsReview = 'n' then 'N/A'
+                        when smsReviewInProgress IN ('S','SU','R') then smsReviewInProgress
+                        when (SmsReviewCompliant = '1' or SMS4801 = '1') and SmsReviewCompliant<>'X' and SMS4801 <> 'X' then '1' 
+                        when (SmsReviewCompliant = '2' or SMS4801 = '2') and SmsReviewCompliant<>'X' and SMS4801 <> 'X' then '2' 
+                        when (SmsReviewCompliant = '3' or SMS4801 = '3') and SmsReviewCompliant<>'X' and SMS4801 <> 'X' then '3' 
+                        when SmsReviewCompliant = '' and SMS4801 = '' then ''
+                        when SmsReviewCompliant = '' and SMS4801 = 'X' then 'X'
+                        when SmsReviewCompliant = 'X' and SMS4801 ='' then 'X'
+                        when SmsReviewCompliant = 'C' and SMS4801 = 'X' then 'X'
+                        when SmsReviewCompliant = 'X' and SMS4801 = 'C' then 'X'
+                        when SmsReviewCompliant = 'C' and (SMS4801 = 'C' or SMS4801 = 'N/A') then 'C'
+                        when SmsReviewCompliant = '' and (SMS4801 = 'C' or SMS4801 = 'N/A') then 'C'
+                        when SmsReviewCompliant = 'C' and (SMS4801 = '' or SMS4801 = 'N/A') then 'C'
+                        else 'X'
+                    end SmsCompliant
+				from
+				(
+					select
+					    P.name portalName,
+                        CCS.companyId, CCS.id, CCS.fromDate, CCS.toDate,
+                        CO.name companyName,
+                        CO.abn,
+                        CCC.name categoryName,
+                        case
+                            when now() > CCS.toDate then 'X'
+                            when PCCS.status = 'started' then 'S'
+                            when PCCS.status = 'submitted' then 'SU'
+                            when PCCS.status = 'returned' then 'R'
+                            when PCCS.status = 'approved' then 'C'
+                            else ''
+                        end as profileStatus,
+                        CCS.pendingCompanyComplianceCertsId,
+                        case
+                            when CCS.pendingCompanyComplianceCertsId is null or coalesce(Y.requiredCertCount, 0) = 0 then 'N/A'
+                       
+                            when X.minCertExpiryDays<30 and X.actualCertCount=Y.requiredCertCount and PCCC.status='approved' then '1'
+                            when X.minCertExpiryDays<60 and X.actualCertCount=Y.requiredCertCount and PCCC.status='approved' then '2'
+                            when X.minCertExpiryDays<90 and X.actualCertCount=Y.requiredCertCount and PCCC.status='approved' then '3'
+                            when CCS.pendingCompanyComplianceCertsId >0 and coalesce(X.actualCertCount, 0) >= coalesce(Y.requiredCertCount, 0) and PCCC.status='approved' then 'C'
+                            when PCCC.status='started' then 'S'
+                            when PCCC.status = 'submitted' then 'SU'
+                            when PCCC.status = 'returned' then 'R'
+                            else 'X'
+                        end certCompliant,
+                     
+                        case
+                            when PCCC.status='started' then 'S'
+                            when PCCC.status = 'submitted' then 'SU'
+                            when PCCC.status = 'returned' then 'R'
+                            when CCS.pendingCompanyComplianceCertsId is null or (coalesce(Y.requiredLicenceCount, 0) = 0 and PCCC.status = 'approved') then 'N/A'
+                      
+                            when X.minLicenceExpiryDays<30 and X.actualLicenceCount=Y.requiredLicenceCount and PCCC.status='approved' then '1'
+                            when X.minLicenceExpiryDays<60 and X.actualLicenceCount=Y.requiredLicenceCount and PCCC.status='approved' then '2'
+                            when X.minLicenceExpiryDays<90 and X.actualLicenceCount=Y.requiredLicenceCount and PCCC.status='approved' then '3'
+                            when CCS.pendingCompanyComplianceCertsId >0 and coalesce(X.actualLicenceCount, 0) >= coalesce(Y.requiredLicenceCount, 0) and PCCC.status='approved' then 'C'
+                            else
+                                case
+                                    when PendingCerts.startedLicenceCount > 0 then 'S'
+                                    when PendingCerts.submittedLicenceCount > 0 then 'SU'
+                                    when PendingCerts.returnedLicenceCount > 0 then 'R'
+                                    else 'X'
+                                end
+                        end licenceCompliant,
+                         X.actualLicenceCount, Y.requiredLicenceCount,
+                        case
+                            when PCCC.status='started' then 'S'
+                            when PCCC.status = 'submitted' then 'SU'
+                            when PCCC.status = 'returned' then 'R'
+                            when CCS.pendingCompanyComplianceCertsId is null or coalesce(Y.requiredInsuranceCount, 0) = 0 and PCCC.status='approved' then 'N/A'
+          
+                            when X.minInsuranceExpiryDays<30 and X.actualInsuranceCount=Y.requiredInsuranceCount and PCCC.status='approved' then '1'
+                            when X.minInsuranceExpiryDays<60 and X.actualInsuranceCount=Y.requiredInsuranceCount and PCCC.status='approved' then '2'
+                            when X.minInsuranceExpiryDays<90 and X.actualInsuranceCount=Y.requiredInsuranceCount and PCCC.status='approved' then '3'
+                            when CCS.pendingCompanyComplianceCertsId >0 and coalesce(X.actualInsuranceCount, 0) >= coalesce(Y.requiredInsuranceCount, 0) and PCCC.status='approved' then 'C'
+                            else
+                                case
+                                    when PendingCerts.startedInsuranceCount > 0 then 'S'
+                                    when PendingCerts.submittedInsuranceCount > 0 then 'SU'
+                                    when PendingCerts.returnedInsuranceCount > 0 then 'R'
+                                    else 'X'
+                                end
+                        end insuranceCompliant,
+                   
+                        PCCC.status insuranceCompliantStatus,X.actualInsuranceCount, Y.requiredInsuranceCount,
+                        case
+                            when CCS.pendingCompanyComplianceSMSReviewId is null and Z.companyId is null then ''
+                          
+                            when Z.SmsExpiryDays<30 and Z.coCertId is not null and Z.status='approved'  then '1'
+                            when Z.SmsExpiryDays<60 and Z.coCertId is not null and Z.status='approved'  then '2'
+                            when Z.SmsExpiryDays<90 and Z.coCertId is not null and Z.status='approved'  then '3'
+                            when Z.status='started' then 'S'
+                            when Z.status='submitted' then 'SU'
+                            when Z.status='return' then 'R'
+                            when Z.coCertId is not null and Z.status='approved'
+                                and now() between Z.certStartDate and Z.certEndDate
+                                and Z.certActive='y'
+                                then 'C'
+                            else 'X'
+                        end SmsReviewCompliant,Z.status,
+                        case
+                            when 4801Grp.companyId is null or CCC.name like '%sub-contractor%' or CCC.name like '%subcontractor%' then 'N/A'
+                            when CCC.name LIKE '%3%' and K.4801Status <> 'C' then 'N/A' 
+                            when K.min4801ExpiryDays<30 and PCCC.status='approved' then '1'
+                            when K.min4801ExpiryDays<60 and PCCC.status='approved' then '2'
+                            when K.min4801ExpiryDays<90 and PCCC.status='approved' then '3'
+                            when PCCC.status='started' then 'S'
+                            when PCCC.status='submitted' then 'SU'
+                            when PCCC.status='returned' then 'R'
+                            when 4801Grp.companyId is not null and PCCC.status='approved' then coalesce(K.4801Status,'X')
+                            else 'X'
+                        end SMS4801,
+                        K.4801Status, 4801Grp.companyId 4801CompanyId,
+                        if(CCS.pendingCompanyComplianceSMSReviewId > 0
+                               and Z.coCertid is not null and not (now() between Z.certStartDate and Z.certEndDate), 'X', '') SmsExpired,
+                        Z.smsReviewInProgress,
+                        CCC.requiresSmsReview, 
+                        case
+                            when PendingCerts.startedLicenceCount > 0 then 'S'
+                            when PendingCerts.submittedLicenceCount > 0 then 'SU'
+                            when PendingCerts.returnedLicenceCount > 0 then 'R'
+                            else 'X'
+                        end As licenceStatus,
+                        case
+                            when PendingCerts.startedInsuranceCount > 0 then 'S'
+                            when PendingCerts.submittedInsuranceCount > 0 then 'SU'
+                            when PendingCerts.returnedInsuranceCount > 0 then 'R'
+                            else 'X'
+                        end As insuranceStatus,
+                        CO.contactEmail
+
+                    from
+                        onsitedatawarehouse.`vw_rpt_CompanyComplianceSubscription` CCS
+					    join onsite.Portal P on CCS.portalId = P.id
+					    join
+                        (
+						    select
+						        p.id As portalId,
+						        coalesce(s.scope_id, r.scopeId, 0) as portalScopeId
+						    from
+						        onsitedatawarehouse.dwReportUser ru
+                                join onsitedatawarehouse.dwReportUserScope rus on rus.reportUserId = ru.id
+                                left join onsite.Site s on s.scope_id = rus.scopeId
+                                left join onsite.Realm r on r.scopeId = rus.scopeId
+                                left join onsite.Portal p on p.siteId = s.id or p.realmId = r.id
+						    where
+						        ru.username =  $P{LoggedInUsername}
+						        and p.id is not null
+					    ) as d on d.portalId = P.id
+                        join onsite.ScopeConco sc on sc.conco_company_id = CCS.companyId and sc.scope_id = d.portalScopeId
+                        join onsite.PendingCompanyComplianceSubscription PCCS on CCS.id = PCCS.companyComplianceSubscriptionId
+                        join onsite.CompanyComplianceCategory CCC on CCS.companyComplianceCategoryId = CCC.id
+                        join onsite.Company CO on CO.id = CCS.companyId
+                            and CO.is_active = 'y'
+                            and CO.id not in (
+						        select SUS.companyId
+                                from onsite.CompanyComplianceSuspension SUS
+                                join onsite.CompanyComplianceSuspensionOnsite SUSO on SUSO.companyComplianceSuspensionId = SUS.id
+						        where CCS.companyId = SUS.companyId and SUSO.portalId = CCS.portalId and (SUS.toDate IS NULL OR SUS.toDate >= NOW())
+					        )
+
+                  
+                        left join (
+                            select
+                                CCS.id ccsId,
+                                CCS.portalId,
+                                CCS.companyId 
+                 
+                            from onsitedatawarehouse.`vw_rpt_CompanyComplianceSubscription` CCS
+                                join onsite.CompanyComplianceCategory CCC on CCC.id = CCS.companyComplianceCategoryId
+                            where
+                                CCC.name like '%4801%'
+                                and now() between CCS.fromDate and CCS.toDate
+
+                            union
+
+                            select
+                                CCS.id as ccsId, CCS.portalId, CCS.companyId 
+                            from onsitedatawarehouse.`vw_rpt_CompanyComplianceSubscription` CCS
+                            
+                                join onsite.CompanyComplianceCategory CCC on CCC.id = CCS.companyComplianceCategoryId
+                                join onsite.CoCert CC on CC.id = CCS.coCertId
+                                join onsite.Cert C on CC.certId = C.id
+                                join onsite.PendingCompanyComplianceSubscription PSUB ON CCS.pendingCompanyComplianceSubscriptionId = PSUB.id
+                                join onsite.CompanyComplianceSubscriptionDefinition DEF ON PSUB.companyComplianceSubscriptionDefinitionId = DEF.id
+                            where C.typeId = 6 and CC.active = 'y'
+         
+                                and ((COALESCE(C.realmId,0) = DEF.realmId and COALESCE(C.siteId,0) = DEF.siteId)
+                                OR (C.realmId = DEF.managedById and DEF.managedByType = 'realm')
+                                OR (C.siteId = DEF.managedById and DEF.managedByType = 'site'))
+                        ) as 4801Grp on 4801Grp.companyId = CCS.companyId and 4801Grp.portalId = P.id and CCS.id = 4801Grp.ccsID
+                        left join
+                        (
+                          
+                            SELECT
+                                CC.coId companyId, count(*) actualCertCount,datediff(min(DATE_ADD(CC.certEndDate, INTERVAL COALESCE(gps.gracePeriodDays, COALESCE(gpc.gracePeriodDays, 0)) DAY)),now()) minCertExpiryDays,
+                              
+                                datediff(min(case when CT.name = 'Licence' then DATE_ADD(CC.certEndDate, INTERVAL COALESCE(gps.gracePeriodDays, COALESCE(gpc.gracePeriodDays, 0)) DAY) end),now()) minLicenceExpiryDays,
+                                sum(IF(CT.name = 'Licence', 1, 0)) actualLicenceCount,
+                                
+                                datediff(min(case when CT.name = 'Insurance' then DATE_ADD(CC.certEndDate, INTERVAL COALESCE(gps.gracePeriodDays, COALESCE(gpc.gracePeriodDays, 0)) DAY) end),now()) minInsuranceExpiryDays,
+                                sum(IF(CT.name = 'Insurance', 1, 0)) actualInsuranceCount
+                            from
+                                onsite.CoCert CC
+                                join onsite.CompanyComplianceSubscriptionCert CCSC on CC.certId = CCSC.certId
+                                join onsite.Cert C on CCSC.certId = C.id
+                                join onsite.CertType CT on C.typeId = CT.id
+                            
+                                join onsitedatawarehouse.`vw_rpt_CompanyComplianceSubscription` CCS ON CCSC.companyComplianceSubscriptionId = CCS.id and CCS.companyId = CC.coId
+                                join onsite.Portal P ON CCS.portalId = P.id
+                                left join onsite.CertGracePeriod gpc ON gpc.certTypeId = C.typeId and ((gpc.siteId = C.siteId and C.siteId > 0) OR (gpc.realmId = C.realmId and C.realmId > 0))
+                                left join onsite.CertGracePeriod gps ON gps.certTypeId = C.typeId and gps.siteId = IF(P.siteId is null, -1, P.siteId)
+                            where
+                                now() between CC.certStartDate and DATE_ADD(CC.certEndDate, INTERVAL COALESCE(gps.gracePeriodDays, COALESCE(gpc.gracePeriodDays, 0)) DAY)
+                                and CC.active='y' and CCS.active='y' and now() between CCS.fromDate and CCS.toDate
+                            group by
+                                CC.coId
+                        ) X on X.companyId=CCS.companyId
+					    left join
+                        (
+                        
+                            SELECT
+                                CC.coId companyId,
+                                datediff(min(case when C.typeId = 6 then DATE_ADD(CC.certEndDate, INTERVAL COALESCE(gps.gracePeriodDays, COALESCE(gpc.gracePeriodDays, 0)) DAY) end),now()) min4801ExpiryDays,
+                                min(case when C.typeId = 6 then 'C' end) 4801Status
+                            from
+                                onsite.CoCert CC
+                                join onsite.Cert C on CC.certId = C.id
+                                join onsitedatawarehouse.`vw_rpt_CompanyComplianceSubscription` CCS
+                          
+                                ON CCS.companyId = CC.coId
+                                join onsite.Portal P ON CCS.portalId = P.id
+                                join onsite.PendingCompanyComplianceSubscription PSUB ON CCS.pendingCompanyComplianceSubscriptionId = PSUB.id
+                                join onsite.CompanyComplianceSubscriptionDefinition DEF ON PSUB.companyComplianceSubscriptionDefinitionId = DEF.id
+                                left join onsite.CertGracePeriod gpc ON gpc.certTypeId = C.typeId and ((gpc.siteId = C.siteId and C.siteId > 0) OR (gpc.realmId = C.realmId and C.realmId > 0))
+                                left join onsite.CertGracePeriod gps ON gps.certTypeId = C.typeId and gps.siteId = IF(P.siteId is null, "-1", P.siteId)
+                            where
+                                now() between CC.certStartDate and DATE_ADD(CC.certEndDate, INTERVAL COALESCE(gps.gracePeriodDays, COALESCE(gpc.gracePeriodDays, 0)) DAY)
+                                and CC.active='y' and CCS.active='y' and now() between CCS.fromDate and CCS.toDate
+                     
+                                and ((COALESCE(C.realmId,0) = DEF.realmId and COALESCE(C.siteId,0) = DEF.siteId)
+                                OR (C.realmId = DEF.managedById and DEF.managedByType = 'realm')
+                                OR (C.siteId = DEF.managedById and DEF.managedByType = 'site'))
+                            group by
+                                CC.coId
+					    ) K on K.companyId=CCS.companyId
+					    left join
+                        (
+	
+                            SELECT
+                                CCS.companyComplianceSubscriptionId, count(*) requiredCertCount,
+                                sum(IF(CT.name = 'Licence', 1, 0)) requiredLicenceCount,
+                                sum(IF(CT.name = 'Insurance', 1, 0)) requiredInsuranceCount
+                            from
+                                onsite.CompanyComplianceSubscriptionCert CCSC
+                                join onsitedatawarehouse.`vw_rpt_CompanyComplianceSubscription` CCS
+                               
+                                    on CCS.active='y'
+                                    and now() between CCS.fromDate and CCS.toDate
+                                    and CCS.id = CCSC.companyComplianceSubscriptionId
+                                join onsite.Cert C on CCSC.certId = C.id
+                                join onsite.CertType CT on C.typeId = CT.id
+                            group by
+                                companyComplianceSubscriptionId
+					    ) Y on Y.companyComplianceSubscriptionId=CCS.id
+					    left join
+                        (
+						    select
+						        pvd.companyId,
+							   sum(IF(CT.name = 'Licence' and pvd.status = 'started', 1, 0)) startedLicenceCount,
+							   sum(IF(CT.name = 'Licence' and pvd.status = 'submitted', 1, 0)) submittedLicenceCount,
+							   sum(IF(CT.name = 'Licence' and pvd.status = 'returned', 1, 0)) returnedLicenceCount,
+							   sum(IF(CT.name = 'Insurance' and pvd.status = 'started', 1, 0)) startedInsuranceCount,
+							   sum(IF(CT.name = 'Insurance' and pvd.status = 'submitted', 1, 0)) submittedInsuranceCount,
+							   sum(IF(CT.name = 'Insurance' and pvd.status = 'returned', 1, 0)) returnedInsuranceCount
+						    from
+						        onsite.PendingVerifiedDoc pvd
+                                join onsite.PendingVerifiedDocPortal pvdp ON pvdp.pvdId=pvd.id
+                                join onsite.PortalDataDef pdd ON pvdp.portalDataDefId = pdd.id
+                                join onsite.PortalPage page ON pdd.portalPageId = page.id
+                                join onsite.PortalDataDefFile pddf ON pdd.id = pddf.portalDataDefId
+                                join onsite.PendingDataStatusLog pdslStarted ON pdslStarted.objectType = 'pendingVerifiedDoc' and pdslStarted.setStatusTo = 'started' and pdslStarted.objectId = pvd.id
+                                join onsite.Cert C on C.id = pddf.deliversObjectId
+                                join onsite.CertType CT on C.typeId = CT.id
+                                join
+						        (
+                                    select p.id As portalId
+                                    from onsitedatawarehouse.dwReportUser ru
+                                    join onsitedatawarehouse.dwReportUserScope rus on rus.reportUserId = ru.id
+                                        left join onsite.Site s on s.scope_id = rus.scopeId
+                                        left join onsite.Realm r on r.scopeId = rus.scopeId
+                                        left join onsite.Portal p on p.siteId = s.id or p.realmId = r.id
+                                    where ru.username =  $P{LoggedInUsername} and p.id is not null
+                                ) as d on d.portalId = pvdp.portalId
+						    where
+						        (pvd.sourceType = 'portal')
+                                and pvd.status in('started', 'submitted')
+                                and pddf.deliversObjectType = 'cert'
+						    group by
+						        pvd.companyId
+					    ) as PendingCerts on PendingCerts.companyId = CCS.companyId
+					    left join onsite.PendingCompanyComplianceCerts PCCC on CCS.pendingCompanyComplianceCertsId = PCCC.id
+				
+					    left join
+                        (
+						    select
+						        CCS.id subscriptionId, PCCSR.companyId, PCCSR.status,
+							    CC.id coCertID, CC.certStartDate,DATE_ADD(CC.certEndDate, INTERVAL COALESCE(gps.gracePeriodDays, COALESCE(gpc.gracePeriodDays, 0)) DAY) certEndDate,CC.active certActive,
+							    datediff(DATE_ADD(CC.certEndDate, INTERVAL COALESCE(gps.gracePeriodDays, COALESCE(gpc.gracePeriodDays, 0)) DAY),now()) SmsExpiryDays,
+                                case
+                                    when PCCSR.status = 'started' then 'S'
+                                    when PCCSR.status = 'submitted' then 'SU'
+                                    when PCCSR.status = 'returned' then 'R'
+                                    else ''
+                                end smsReviewInProgress,
+							    PDSLStart.smsReviewStartDate
+						    from
+						        onsite.PendingCompanyComplianceSmsReview PCCSR
+						        join onsitedatawarehouse.`vw_rpt_CompanyComplianceSubscription` CCS
+                         
+                                    on CCS.active='y'
+                                    and PCCSR.id = CCS.pendingCompanyComplianceSmsReviewId
+                                    and now() between CCS.fromDate and CCS.toDate
+						        join onsite.Portal P ON CCS.portalId = P.id
+                    
+                                join
+						        (
+                                    select objectId, min(logDateTime) smsReviewStartDate
+                                    from onsite.PendingDataStatusLog
+                                    where objectType = 'pendingCompanyComplianceSmsReview' and setStatusTo='started'
+                                    group by objectId
+                                ) PDSLStart ON PCCSR.id = PDSLStart.objectId
+                                left join onsite.CoCert CC on CC.id = PCCSR.coCertId
+                                left join onsite.Cert Ce on Ce.id = CC.certId
+                                left join onsite.CertGracePeriod gpc ON gpc.certTypeId = Ce.typeId and ((gpc.siteId = Ce.siteId and Ce.siteId > 0) OR (gpc.realmId = Ce.realmId and Ce.realmId > 0))
+                                left join onsite.CertGracePeriod gps ON gps.certTypeId = Ce.typeId and gps.siteId = IF(P.siteId is null, -1, P.siteId)
+					    ) Z on CCS.id = Z.subscriptionId
+					    where CCS.active='y'
+				) ComplianceData
+			) as d
+		) as d
+		order by d.companyId, score, d.fromDate desc
+	) as d
+	, (select @subNo := 0, @lastCompanyId := 0) as r
+) as d
+ where 
+     subNo = 1]]>
+	</queryString>
+	<field name="subNo" class="java.lang.Double"/>
+	<field name="current" class="java.lang.Integer"/>
+	<field name="expired" class="java.lang.Integer"/>
+	<field name="future" class="java.lang.Integer"/>
+	<field name="OverallCompliance" class="java.lang.String"/>
+	<field name="score" class="java.lang.Integer"/>
+	<field name="portalName" class="java.lang.String"/>
+	<field name="companyId" class="java.lang.Integer"/>
+	<field name="id" class="java.lang.Integer"/>
+	<field name="fromDate" class="java.sql.Date"/>
+	<field name="toDate" class="java.sql.Date"/>
+	<field name="companyName" class="java.lang.String"/>
+	<field name="abn" class="java.lang.String"/>
+	<field name="categoryName" class="java.lang.String"/>
+	<field name="profileStatus" class="java.lang.String"/>
+	<field name="pendingCompanyComplianceCertsId" class="java.lang.Integer"/>
+	<field name="certCompliant" class="java.lang.String"/>
+	<field name="licenceCompliant" class="java.lang.String"/>
+	<field name="actualLicenceCount" class="java.math.BigDecimal"/>
+	<field name="requiredLicenceCount" class="java.math.BigDecimal"/>
+	<field name="insuranceCompliant" class="java.lang.String"/>
+	<field name="insuranceCompliantStatus" class="java.lang.String"/>
+	<field name="actualInsuranceCount" class="java.math.BigDecimal"/>
+	<field name="requiredInsuranceCount" class="java.math.BigDecimal"/>
+	<field name="SmsReviewCompliant" class="java.lang.String"/>
+	<field name="status" class="java.lang.String"/>
+	<field name="SMS4801" class="java.lang.String"/>
+	<field name="4801Status" class="java.lang.String"/>
+	<field name="4801CompanyId" class="java.lang.Integer"/>
+	<field name="SmsExpired" class="java.lang.String"/>
+	<field name="smsReviewInProgress" class="java.lang.String"/>
+	<field name="requiresSmsReview" class="java.lang.String"/>
+	<field name="licenceStatus" class="java.lang.String"/>
+	<field name="insuranceStatus" class="java.lang.String"/>
+	<field name="contactEmail" class="java.lang.String"/>
+	<field name="registeredCompliant" class="java.lang.String"/>
+	<field name="SmsCompliant" class="java.lang.String"/>
+	<field name="COLUMN_38" class="java.lang.String"/>
+	<field name="COLUMN_39" class="java.lang.Integer"/>
+	<field name="COLUMN_40" class="java.lang.Integer"/>
+	<field name="COLUMN_41" class="java.lang.Integer"/>
+	<field name="@subNo := 0" class="java.lang.Integer"/>
+	<field name="@lastCompanyId := 0" class="java.lang.Integer"/>
+	<field name="COLUMN_44" class="java.lang.Double"/>
+	<field name="@lastCompanyId := d.companyId" class="java.lang.Long"/>
+	<sortField name="companyName"/>
+	<variable name="registeredCompliant" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="100" splitType="Stretch">
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			<textField>
+				<reportElement x="430" y="0" width="930" height="80" forecolor="#000000" uuid="346038fd-3b27-453e-a200-e76b0a948410">
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Lato" size="24" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{portalName} + " - Company Compliance Report"]]></textFieldExpression>
+			</textField>
+			<image>
+				<reportElement x="0" y="0" width="420" height="80" uuid="ef496a30-d85f-40bd-a04b-1df0d9346d3a">
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<imageExpression><![CDATA["repo:BIAvetta"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="99" splitType="Stretch">
+			<staticText>
+				<reportElement x="27" y="0" width="150" height="18" forecolor="#000000" uuid="786f9dd0-6aa4-40aa-94de-c33684769c00"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Lato"/>
+				</textElement>
+				<text><![CDATA[Compliant]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="212" y="0" width="150" height="18" forecolor="#000000" uuid="7888544a-bcd7-4ce3-90a5-13eb482bf099"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Lato"/>
+				</textElement>
+				<text><![CDATA[Started]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="186" y="0" width="20" height="18" forecolor="#FFFFFF" backcolor="#FF9900" uuid="8ffaaac0-e80c-4a8e-b948-7b8eec5087d3"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Lato" isBold="true"/>
+				</textElement>
+				<text><![CDATA[S]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="1" y="0" width="20" height="18" forecolor="#FFFFFF" backcolor="#509C00" uuid="82ec7aac-f1b0-43ef-a41e-309f7a916cb3"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Lato" isBold="true"/>
+				</textElement>
+				<text><![CDATA[C]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="212" y="37" width="150" height="18" forecolor="#000000" uuid="38072fc8-eeba-4ed6-90c2-e89646e3b680"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Lato"/>
+				</textElement>
+				<text><![CDATA[Not Applicable]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="376" y="19" width="20" height="18" forecolor="#FFFFFF" backcolor="#FF0000" uuid="fdf48fd5-9d59-4dc6-b8e3-b29ec231663e"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Lato" isBold="true"/>
+				</textElement>
+				<text><![CDATA[NC]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="402" y="19" width="150" height="18" forecolor="#000000" uuid="e5035d96-3609-4c62-9fe5-88f5e6698c9b"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Lato"/>
+				</textElement>
+				<text><![CDATA[Non Compliant]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="27" y="19" width="150" height="18" forecolor="#000000" uuid="50bff788-ac73-4e72-9fff-5bb039be2013"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Lato"/>
+				</textElement>
+				<text><![CDATA[Expires in 1 month]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="1" y="19" width="20" height="18" forecolor="#FFFFFF" backcolor="#509C00" uuid="149ea31b-f347-4081-8de4-ab8075ef52b8"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Lato" isBold="true"/>
+				</textElement>
+				<text><![CDATA[1]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="27" y="38" width="150" height="18" forecolor="#000000" uuid="a8e7f22a-a920-4bef-b685-db7141677af6"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Lato"/>
+				</textElement>
+				<text><![CDATA[Expires in 2 months]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="1" y="38" width="20" height="18" forecolor="#FFFFFF" backcolor="#509C00" uuid="206e5996-befb-49da-b710-52a70f1d3454"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Lato" isBold="true"/>
+				</textElement>
+				<text><![CDATA[2]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="27" y="57" width="150" height="18" forecolor="#000000" uuid="896b4d83-025e-47f4-b354-5eb1cc3ab14e"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Lato"/>
+				</textElement>
+				<text><![CDATA[Expires in 3 months]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="1" y="57" width="20" height="18" forecolor="#FFFFFF" backcolor="#509C00" uuid="a18b89c7-8705-414b-8e91-990fcebef82b"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Lato" isBold="true"/>
+				</textElement>
+				<text><![CDATA[3]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="186" y="19" width="20" height="18" forecolor="#FFFFFF" backcolor="#FF9900" uuid="06eaf523-4f4b-456d-b6d3-7a9019a0af80"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Lato" isBold="true"/>
+				</textElement>
+				<text><![CDATA[SU]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="212" y="19" width="150" height="18" forecolor="#000000" uuid="0bd9b6a4-3738-40d0-b24f-d0c37bb4a494"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Lato"/>
+				</textElement>
+				<text><![CDATA[Submitted]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="376" y="0" width="20" height="18" forecolor="#FFFFFF" backcolor="#DD550C" uuid="261ffd1c-1297-4c9c-a35b-128000f8c50c"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Lato" isBold="true"/>
+				</textElement>
+				<text><![CDATA[R]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="402" y="0" width="150" height="18" forecolor="#000000" uuid="ac62d072-fb35-425f-9215-c187423f9a8f"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Lato"/>
+				</textElement>
+				<text><![CDATA[Returned]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="402" y="38" width="150" height="18" forecolor="#000000" uuid="d738f7a8-3b94-49f9-9dce-e8a5e756a24e"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Lato"/>
+				</textElement>
+				<text><![CDATA[Expired]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="376" y="38" width="20" height="18" forecolor="#FFFFFF" backcolor="#FF0000" uuid="0247759f-8d3f-42a8-a699-cc254c3e9bbc"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[X]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="186" y="37" width="20" height="18" forecolor="#000000" uuid="08c59235-8d7c-4c12-acf9-fe9cc0fcab9c"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Lato"/>
+				</textElement>
+				<text><![CDATA[N/A]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="68" splitType="Stretch">
+			<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+			<staticText>
+				<reportElement style="CellStyle" stretchType="RelativeToBandHeight" mode="Opaque" x="0" y="0" width="43" height="68" forecolor="#000000" backcolor="#F2F2F2" uuid="6f3bc1a6-50d8-4acb-a334-ace79a1acd38"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle" rotation="Left">
+					<font fontName="LAto" size="10" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Pegasus ID]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="CellStyle" stretchType="RelativeToBandHeight" mode="Opaque" x="43" y="0" width="250" height="68" forecolor="#000000" backcolor="#F2F2F2" uuid="b737590f-6aef-45a9-b450-bfb3b6309842"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None">
+					<font fontName="LAto" size="10" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Company Name]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="CellStyle" stretchType="RelativeToBandHeight" mode="Opaque" x="633" y="0" width="100" height="68" forecolor="#000000" backcolor="#F2F2F2" uuid="ce0cfd88-5073-4e11-9892-680e1eade7d0">
+					<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
+				</reportElement>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" markup="none">
+					<font fontName="LAto" size="10" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Company Category]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="CellStyle" stretchType="RelativeToBandHeight" mode="Opaque" x="802" y="0" width="50" height="68" forecolor="#000000" backcolor="#F2F2F2" uuid="8f788a27-b4da-438c-903b-5bda164610cd">
+					<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
+				</reportElement>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle" rotation="Left">
+					<font fontName="LAto" size="10" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Profile]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="CellStyle" stretchType="RelativeToBandHeight" mode="Opaque" x="733" y="0" width="69" height="68" forecolor="#000000" backcolor="#F2F2F2" uuid="f0b596a9-edd4-4e33-a686-5a1f612672cd">
+					<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
+				</reportElement>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None">
+					<font fontName="LAto" size="10" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Overall Compliance]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="CellStyle" stretchType="RelativeToBandHeight" mode="Opaque" x="902" y="0" width="50" height="68" forecolor="#000000" backcolor="#F2F2F2" uuid="39028a4f-2ac2-4092-9601-e7b56433bf3b">
+					<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
+				</reportElement>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle" rotation="Left">
+					<font fontName="LAto" size="10" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Licence Compliant]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="CellStyle" stretchType="RelativeToBandHeight" mode="Opaque" x="852" y="0" width="50" height="68" forecolor="#000000" backcolor="#F2F2F2" uuid="5c891bdf-1f56-459c-aba2-ad0f38cf5680">
+					<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
+				</reportElement>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle" rotation="Left">
+					<font fontName="LAto" size="10" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Insurance Compliant]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="CellStyle" stretchType="RelativeToBandHeight" mode="Opaque" x="293" y="0" width="90" height="68" forecolor="#000000" backcolor="#F2F2F2" uuid="7225fe99-0e25-47ec-84f4-a35ff3ea4999"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None">
+					<font fontName="LAto" size="10" isBold="false"/>
+				</textElement>
+				<text><![CDATA[ABN]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="CellStyle" stretchType="RelativeToBandHeight" mode="Opaque" x="952" y="0" width="50" height="68" forecolor="#000000" backcolor="#F2F2F2" uuid="39082018-80c5-45b4-9d94-e0bc7659f449">
+					<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
+				</reportElement>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle" rotation="Left">
+					<font fontName="LAto" size="10" isBold="false"/>
+				</textElement>
+				<text><![CDATA[SMS - Compliant]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="CellStyle" stretchType="RelativeToBandHeight" mode="Opaque" x="1002" y="0" width="50" height="68" forecolor="#000000" backcolor="#F2F2F2" uuid="31a237e3-8590-40e7-ae86-c6366ea595b0">
+					<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
+				</reportElement>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle" rotation="Left">
+					<font fontName="LAto" size="10" isBold="false"/>
+				</textElement>
+				<text><![CDATA[SMS - 4801/18001]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="CellStyle" stretchType="RelativeToBandHeight" mode="Opaque" x="383" y="0" width="250" height="68" forecolor="#000000" backcolor="#F2F2F2" uuid="8f80ccc5-7c79-4802-9a4b-866e93e9035a">
+					<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" markup="none">
+					<font fontName="Lato" size="10" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Contact Email]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="23" splitType="Stretch">
+			<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+			<textField textAdjust="StretchHeight" isBlankWhenNull="true">
+				<reportElement x="0" y="0" width="43" height="23" forecolor="#000000" uuid="025ccc81-b868-426f-83bc-8f68194fb31c"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="lato" size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{companyId}]]></textFieldExpression>
+			</textField>
+			<textField textAdjust="StretchHeight" isBlankWhenNull="true">
+				<reportElement x="43" y="0" width="250" height="23" forecolor="#000000" uuid="3ddf8a2c-ed4f-48e4-8a76-8b52c61e701a"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="lato" size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{companyName}]]></textFieldExpression>
+			</textField>
+			<textField textAdjust="StretchHeight" isBlankWhenNull="true">
+				<reportElement x="633" y="0" width="100" height="23" forecolor="#000000" uuid="c8c9f971-625b-40a1-91a7-08aa1c1dc0c9"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="lato" size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{categoryName}]]></textFieldExpression>
+			</textField>
+			<textField textAdjust="StretchHeight" isBlankWhenNull="true">
+				<reportElement style="licenceStyle" mode="Opaque" x="902" y="0" width="50" height="23" forecolor="#000000" uuid="14756545-1a1f-4303-9a11-6fed073a3a07"/>
+				<box>
+					<pen lineWidth="0.5" lineColor="#000000"/>
+					<topPen lineWidth="0.5" lineColor="#000000"/>
+					<leftPen lineWidth="0.5" lineColor="#000000"/>
+					<bottomPen lineWidth="0.5" lineColor="#000000"/>
+					<rightPen lineWidth="0.5" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="lato" size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{licenceCompliant}]]></textFieldExpression>
+			</textField>
+			<textField textAdjust="StretchHeight" isBlankWhenNull="true">
+				<reportElement style="insuranceStyle" mode="Opaque" x="852" y="0" width="50" height="23" forecolor="#000000" uuid="3b73ca6e-b366-4393-8a79-89edd2a0338f"/>
+				<box>
+					<pen lineWidth="0.5" lineColor="#000000"/>
+					<topPen lineWidth="0.5" lineColor="#000000"/>
+					<leftPen lineWidth="0.5" lineColor="#000000"/>
+					<bottomPen lineWidth="0.5" lineColor="#000000"/>
+					<rightPen lineWidth="0.5" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="lato" size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{insuranceCompliant}]]></textFieldExpression>
+			</textField>
+			<textField textAdjust="StretchHeight" isBlankWhenNull="true">
+				<reportElement mode="Transparent" x="293" y="0" width="90" height="23" forecolor="#000000" backcolor="#FFFFFF" uuid="d3f95c6c-9f83-4620-b4e2-9d21c2368f32"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="lato" size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[LEN(SUBSTITUTE($F{abn}, " ", "")) == 11 ? CONCATENATE(MID(SUBSTITUTE($F{abn}, " ", ""),1,2), " ", MID(SUBSTITUTE($F{abn}, " ", ""), 3, 3), " ", MID(SUBSTITUTE($F{abn}, " ", ""), 6, 3), " ", MID(SUBSTITUTE($F{abn}, " ", ""), 9, 3)) : $F{abn}]]></textFieldExpression>
+			</textField>
+			<textField textAdjust="StretchHeight" isBlankWhenNull="true">
+				<reportElement style="SMSStyle" mode="Opaque" x="952" y="0" width="50" height="23" forecolor="#000000" uuid="5a350e9f-799b-41b8-92b3-dab26a55d908"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="styled">
+					<font fontName="lato" size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{SmsCompliant}]]></textFieldExpression>
+			</textField>
+			<textField textAdjust="StretchHeight" isBlankWhenNull="true">
+				<reportElement style="4801Style" mode="Opaque" x="1002" y="0" width="50" height="23" forecolor="#000000" uuid="a52a172e-15c4-47ed-91dd-9d1d7d14cabf"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="lato" size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{SMS4801}]]></textFieldExpression>
+			</textField>
+			<textField textAdjust="StretchHeight" isBlankWhenNull="true">
+				<reportElement style="inProgressStyle" mode="Opaque" x="802" y="0" width="50" height="23" forecolor="#000000" uuid="97d6caa3-20a5-45a8-aa39-6613eb6d769d"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5" lineColor="#000000"/>
+					<leftPen lineWidth="0.5" lineColor="#000000"/>
+					<bottomPen lineWidth="0.5" lineColor="#000000"/>
+					<rightPen lineWidth="0.5" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="lato" size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{profileStatus}]]></textFieldExpression>
+			</textField>
+			<textField textAdjust="StretchHeight" isBlankWhenNull="true">
+				<reportElement style="ComplianceStyle" mode="Opaque" x="733" y="0" width="69" height="23" forecolor="#000000" uuid="3cca83b9-2b35-407d-b15d-667849a564a2"/>
+				<box>
+					<pen lineWidth="0.5" lineColor="#000000"/>
+					<topPen lineWidth="0.5" lineColor="#000000"/>
+					<leftPen lineWidth="0.5" lineColor="#000000"/>
+					<bottomPen lineWidth="0.5" lineColor="#000000"/>
+					<rightPen lineWidth="0.5" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="lato" size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{OverallCompliance}]]></textFieldExpression>
+			</textField>
+			<textField textAdjust="StretchHeight" isBlankWhenNull="true">
+				<reportElement x="383" y="0" width="250" height="23" forecolor="#000000" uuid="35aab4e2-2533-47df-ba1c-fa7450abaf2b">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="lato" size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{contactEmail}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="50">
+			<textField evaluationTime="Report" pattern="dd MMMMM yyyy h:mm a">
+				<reportElement x="-5" y="31" width="385" height="19" forecolor="#000000" uuid="4bd0dfa0-1e24-4bcc-8322-ae9286855d3f"/>
+				<textElement verticalAlignment="Bottom">
+					<font fontName="Lato"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Company Compliance Report Printed:   " + DATEFORMAT(TODAY(), "dd MMM yyyy hh:mm:ss a")]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="1034" y="30" width="40" height="20" forecolor="#000000" uuid="3eecf020-1d7d-4f15-a589-999ffe093564"/>
+				<textElement verticalAlignment="Bottom">
+					<font fontName="Lato"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="954" y="30" width="80" height="20" forecolor="#000000" uuid="e1c37026-9a36-435d-90e4-c098b68900c0"/>
+				<textElement textAlignment="Right" verticalAlignment="Bottom">
+					<font fontName="Lato"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+</jasperReport>
